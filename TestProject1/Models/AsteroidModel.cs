@@ -2,7 +2,7 @@
 
 namespace TestProject1.Responses
 {
-    public class AsteroidResponse
+    public class AsteroidModel
     {
         public string Self { get; set; }
         public string Id { get; set; }

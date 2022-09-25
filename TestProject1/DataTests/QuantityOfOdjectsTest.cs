@@ -16,7 +16,7 @@ namespace TestProject1.CheckDataTests
 
             var response = await HttpClientHelper.GetAsync(url);
             var responseData = await response.Content.ReadAsStringAsync();
-            var getQuantity = JsonConvert.DeserializeObject<ObjectsResponce>(responseData, new JsonSerializerSettings
+            var getQuantity = JsonConvert.DeserializeObject<ObjectsModel>(responseData, new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             });
@@ -24,7 +24,7 @@ namespace TestProject1.CheckDataTests
             var actualResult = getQuantity.ElementCount;
             var expectedResult = "25";
 
-            Assert.That(actualResult, Is.EqualTo(expectedResult));
+            Assert.AreEqual(actualResult, expectedResult);
         }
     }
 }

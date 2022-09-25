@@ -12,9 +12,10 @@ namespace TestProject1.StatusTests
             var url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=oHvMn9jIoUDuIzTqb3mgpfqj18dE2K1HSREVUvdy";
 
             var httpResponse = await HttpClientHelper.GetAsync(url);
-            var statusCode = httpResponse.StatusCode;
+            var actualResult = httpResponse.StatusCode;
+            var expectedResult = HttpStatusCode.OK;
 
-            Assert.That(statusCode, Is.EqualTo(HttpStatusCode.OK));
+            Assert.AreEqual(actualResult, expectedResult);
         }
     }
 }

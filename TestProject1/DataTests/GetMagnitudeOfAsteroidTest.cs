@@ -15,14 +15,14 @@ namespace TestProject1.CheckDataTests
 
             var response = await HttpClientHelper.GetAsync(url);
             var responseData = await response.Content.ReadAsStringAsync();
-            var getMagnitude = JsonConvert.DeserializeObject<AsteroidResponse>(responseData, new JsonSerializerSettings
+            var getMagnitude = JsonConvert.DeserializeObject<AsteroidModel>(responseData, new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             });
             var actualResult = getMagnitude.AbsoluteMagnitudeH;
             var expectedResult = "21.8";
 
-            Assert.That(actualResult, Is.EqualTo(expectedResult));
+            Assert.AreEqual(actualResult, expectedResult);
         }
     }
 }

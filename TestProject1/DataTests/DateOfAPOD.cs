@@ -15,7 +15,7 @@ namespace TestProject1.CheckDataTests
 
             var response = await HttpClientHelper.GetAsync(url);
             var responseData = await response.Content.ReadAsStringAsync();
-            var jsonResult = JsonConvert.DeserializeObject<APODResponse>(responseData, new JsonSerializerSettings
+            var jsonResult = JsonConvert.DeserializeObject<APODModel>(responseData, new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             });
@@ -23,7 +23,7 @@ namespace TestProject1.CheckDataTests
             var actualResult = jsonResult.Date;
             var expectedResult = DateTime.Now.ToString("yyyy-MM-dd");
 
-            Assert.That(actualResult, Is.EqualTo(expectedResult));
+            Assert.AreEqual(actualResult, expectedResult);
         }
     }
 }

@@ -2,15 +2,14 @@
 
 namespace TestProject1.Responses
 {
-    public class APODResponse
+    public class PlanetModel
     {
-        public string Copyright { get; set; }
         public string Date { get; set; }
-        public string Explanation { get; set; }
-        public string Hdurl { get; set; }
 
-        [JsonProperty("media_type")]
-        public string MediaType { get; set; }
+        public string Id { get; set; }
+
+        public string Dataset { get; set; }
+        public string Planet { get; set; }
 
         [JsonProperty("service_version")]
         public string ServiceVersion { get; set; }

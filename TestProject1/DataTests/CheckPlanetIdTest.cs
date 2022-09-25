@@ -15,7 +15,7 @@ namespace TestProject1.CheckDataTests
 
             var response = await HttpClientHelper.GetAsync(url);
             var responseData = await response.Content.ReadAsStringAsync();
-            var getPlanetId = JsonConvert.DeserializeObject<PlanetResponse>(responseData, new JsonSerializerSettings
+            var getPlanetId = JsonConvert.DeserializeObject<PlanetModel>(responseData, new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             });
@@ -23,7 +23,7 @@ namespace TestProject1.CheckDataTests
             var actualResult = getPlanetId.Id;
             var expectedResult = "LANDSAT/LC08/C01/T1_SR/LC08_025039_20180103";
 
-            Assert.That(actualResult, Is.EqualTo(expectedResult));
+            Assert.AreEqual(actualResult, expectedResult);
         }
     }
 }

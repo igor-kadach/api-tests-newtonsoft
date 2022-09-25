@@ -2,7 +2,7 @@
 
 namespace TestProject1.Responses
 {
-    public class ObjectsResponce
+    public class ObjectsModel
     {
         public string Next { get; set; }
         public string Previous { get; set; }
