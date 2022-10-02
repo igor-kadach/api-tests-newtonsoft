@@ -19,9 +19,9 @@ namespace TestProject1.CheckDataTests
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             });
+
             var actualResult = getMagnitude.AbsoluteMagnitudeH;
             var expectedResult = "21.8";
-
             Assert.AreEqual(actualResult, expectedResult);
         }
     }

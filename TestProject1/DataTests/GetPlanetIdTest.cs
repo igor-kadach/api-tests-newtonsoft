@@ -6,24 +6,22 @@ using NUnit.Framework;
 
 namespace TestProject1.CheckDataTests
 {
-    public class QuantityOfOdjectsTest
+    public class GetPlanetIdTest
     {
-
         [Test]
-        public async Task QuantityOfObjects()
+        public async Task GetPlanetId()
         {
-            var url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=oHvMn9jIoUDuIzTqb3mgpfqj18dE2K1HSREVUvdy";
+            var url = "https://api.nasa.gov/planetary/earth/assets?lon=-95.33&lat=29.78&date=2018-01-01&&dim=0.10&api_key=oHvMn9jIoUDuIzTqb3mgpfqj18dE2K1HSREVUvdy";
 
             var response = await HttpClientHelper.GetAsync(url);
             var responseData = await response.Content.ReadAsStringAsync();
-            var getQuantity = JsonConvert.DeserializeObject<ObjectsModel>(responseData, new JsonSerializerSettings
+            var getPlanetId = JsonConvert.DeserializeObject<PlanetModel>(responseData, new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             });
 
-            var actualResult = getQuantity.ElementCount;
-            var expectedResult = "25";
-
+            var actualResult = getPlanetId.Id;
+            var expectedResult = "LANDSAT/LC08/C01/T1_SR/LC08_025039_20180103";
             Assert.AreEqual(actualResult, expectedResult);
         }
     }

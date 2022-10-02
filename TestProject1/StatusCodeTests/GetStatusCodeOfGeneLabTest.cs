@@ -12,9 +12,9 @@ namespace TestProject1.StatusTests
             var url = "https://genelab-data.ndc.nasa.gov/genelab/data/glds/files/87";
 
             var httpResponse = await HttpClientHelper.GetAsync(url);
+
             var actualResult = httpResponse.StatusCode;
             var expectedResult = HttpStatusCode.OK;
-
             Assert.AreEqual(actualResult, expectedResult);
         }
     }

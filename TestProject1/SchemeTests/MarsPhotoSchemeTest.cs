@@ -85,8 +85,8 @@ namespace TestProject1.SchemeTests
             var response = await HttpClientHelper.GetAsync(url);
             var content = await response.Content.ReadAsStringAsync();
             var json = JObject.Parse(content);
-            var actualResult = json.IsValid(schemaJson);
 
+            var actualResult = json.IsValid(schemaJson);
             Assert.IsTrue(actualResult);
         }
     }

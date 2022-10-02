@@ -6,23 +6,22 @@ using NUnit.Framework;
 
 namespace TestProject1.CheckDataTests
 {
-    public class DateOfAPOD
+    public class GetQuantityOfOdjectsTest
     {
         [Test]
-        public async Task GetNameOfImage()
+        public async Task QuantityOfObjects()
         {
-            var url = "https://api.nasa.gov/planetary/apod?api_key=oHvMn9jIoUDuIzTqb3mgpfqj18dE2K1HSREVUvdy";
+            var url = "https://api.nasa.gov/neo/rest/v1/feed?start_date=2015-09-07&end_date=2015-09-08&api_key=oHvMn9jIoUDuIzTqb3mgpfqj18dE2K1HSREVUvdy";
 
             var response = await HttpClientHelper.GetAsync(url);
             var responseData = await response.Content.ReadAsStringAsync();
-            var jsonResult = JsonConvert.DeserializeObject<APODModel>(responseData, new JsonSerializerSettings
+            var getQuantity = JsonConvert.DeserializeObject<ObjectsModel>(responseData, new JsonSerializerSettings
             {
                 ContractResolver = new CamelCasePropertyNamesContractResolver()
             });
 
-            var actualResult = jsonResult.Date;
-            var expectedResult = DateTime.Now.ToString("yyyy-MM-dd");
-
+            var actualResult = getQuantity.ElementCount;
+            var expectedResult = "25";
             Assert.AreEqual(actualResult, expectedResult);
         }
     }
