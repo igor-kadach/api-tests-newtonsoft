@@ -10,7 +10,7 @@ namespace TestProject1.Helpers
             _httpClient = new HttpClient();
             var jsonHeader = new MediaTypeWithQualityHeaderValue("application/json");
             var requestHeaders = _httpClient.DefaultRequestHeaders;
-                requestHeaders.Accept.Add(jsonHeader);
+            requestHeaders.Accept.Add(jsonHeader);
         }
         public async static Task<HttpResponseMessage> GetAsync(string url)
         {
